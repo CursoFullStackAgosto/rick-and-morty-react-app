@@ -1,0 +1,59 @@
+.characters {
+    display: grid;
+    align-items: center; // Centra verticalmente los elementos dentro de cada celda
+    justify-items: center; // Centra horizontalmente los elementos dentro de cada celda
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; // Espacio entre columnas
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .character {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    img {
+      width: 200px;
+      border: double 2px lightgray;
+      border-radius: 10px;
+      padding: 1px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  
+    .status {
+      color: black;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-radius: 10px;
+    }
+  
+    .data {
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+    }
+  
+    .origin {
+      background-color: lightgray;
+      color: black;
+      padding-left: 10px;
+      padding-right: 10px;
+      border-radius: 10px;
+    }
+  
+    &.Alive {
+      background-color: chartreuse;
+    }
+  
+    &.Unknown {
+      background-color: lightgray;
+    }
+  
+    &.Dead {
+      background-color: rgb(255, 77, 77);
+    }
+  }
+  
