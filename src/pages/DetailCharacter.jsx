@@ -16,6 +16,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Character from "./components/Character";
+import "../assets/styles/_detailCharacter.scss";
 
 const DetailCharacter = () => {
   const [character, setCharacter] = useState({}) 
@@ -43,8 +44,10 @@ const DetailCharacter = () => {
     <div className="wrapper-characters border">
       <h1>Detalle del personaje</h1>
     </div>
-    <div>
-    <Character character={character} />
+    <div className="cardContainer border">
+      <div className="cardWrapper">
+        <Character character={character} />
+      </div>
     </div>
     </>
   );
