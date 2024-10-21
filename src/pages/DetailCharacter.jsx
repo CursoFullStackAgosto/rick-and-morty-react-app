@@ -44,8 +44,8 @@ const DetailCharacter = () => {
     <div className="wrapper-characters border">
       <h1>Detalle del personaje</h1>
     </div>
-    <div className="border">
-      <div className="cardContainer">
+    <div className="cardContainer border">
+      <div className="cardWrapper">
         <Character character={character} />
       </div>
     </div>
