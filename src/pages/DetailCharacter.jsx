@@ -18,15 +18,17 @@ import { useParams } from "react-router-dom";
 import Character from "./components/Character";
 
 const DetailCharacter = () => {
-  const [character, setCharacter] = useState({}) 
+  const [character, setCharacter] = useState({});
   const params = useParams();
 
   useEffect(() => {
     const getOnePageCharactersFetch = async () => {
       try {
-        const response = await axios.get(`https://rickandmortyapi.com/api/character/${params.characterId}`);
-        console.log(response.data)
-        setCharacter(response.data)
+        const response = await axios.get(
+          `https://rickandmortyapi.com/api/character/` + params.characterId
+        );
+        console.log(response.data);
+        setCharacter(response.data);
       } catch (error) {
         console.error(
           "El error al obtener los personajes es el siguiente:",
@@ -40,12 +42,17 @@ const DetailCharacter = () => {
 
   return (
     <>
-    <div className="wrapper-characters border">
-      <h1>Detalle del personaje</h1>
-    </div>
-    <div>
-    <Character character={character} />
-    </div>
+      {character.id && (
+        <>
+          <div className="wrapper-characters border">
+            <h1>Detalle del personaje</h1>
+          </div>
+
+          <div>
+            <Character character={character} />
+          </div>
+        </>
+      )}
     </>
   );
 };

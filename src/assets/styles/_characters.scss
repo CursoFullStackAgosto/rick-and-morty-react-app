@@ -13,6 +13,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+    border: 1px solid black;
   
     img {
       width: 200px;
@@ -34,6 +36,7 @@
       display: flex;
       justify-content: space-evenly;
       width: 100%;
+      margin: 5px;
     }
   
     .origin {
@@ -44,15 +47,15 @@
       border-radius: 10px;
     }
   
-    &.Alive {
+    .Alive {
       background-color: chartreuse;
     }
   
-    &.Unknown {
+    .Unknown {
       background-color: lightgray;
     }
   
-    &.Dead {
+    .Dead {
       background-color: rgb(255, 77, 77);
     }
   }
