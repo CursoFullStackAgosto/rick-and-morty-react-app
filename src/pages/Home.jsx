@@ -4,8 +4,15 @@ import styles from "./styles.module.scss";
 import imgSeason1 from "../assets/img/Rick_y_morty-S1.webp";
 import imgSeason2 from "../assets/img/Rick_y_morty-S2.webp";
 import imgSeason3 from "../assets/img/Rick_y_morty-S3.webp";
+import { useNavigate } from "react-router-dom";
 // Yo trabaje aquí
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    navigate("/login");
+  };
+
   const home = {
     name: "Rick and Morty",
     path: "#",
@@ -29,8 +36,13 @@ const Home = () => {
     path: "episodios",
   };
 
-  const MENU_HEADERS = [characters, locations, episodes];
+  const logout = {
+    id: 4,
+    name: "Cerrar Sesión",
+    path: "logout",
+  }
 
+  const MENU_HEADERS = [characters, locations, episodes, logout];
   const SEASONS_IMAGES = [
     {
       id: 1,
@@ -64,7 +76,12 @@ const Home = () => {
           >
             {MENU_HEADERS.map((item) => (
               <li key={item.id}>
-                <a href={item.path}>{item.name}</a>
+
+                {item.path === "logout" ? (
+                  <button onClick={handleLogOut}>{item.name}</button>
+                ): (
+                  <a href={item.path}>{item.name}</a>
+                )}
               </li>
             ))}
           </ul>
