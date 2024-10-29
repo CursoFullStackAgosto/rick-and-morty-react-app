@@ -1,16 +1,22 @@
-import React from "react";
 import "../assets/styles/_global.scss";
 import styles from "./styles.module.scss";
 import imgSeason1 from "../assets/img/Rick_y_morty-S1.webp";
 import imgSeason2 from "../assets/img/Rick_y_morty-S2.webp";
 import imgSeason3 from "../assets/img/Rick_y_morty-S3.webp";
 import { useNavigate } from "react-router-dom";
-// Yo trabaje aquí
+import { auth } from "../firebase/firebase-config";
+import { signOut } from "firebase/auth";
+
 const Home = () => {
   const navigate = useNavigate();
 
   const handleLogOut = () => {
-    navigate("/login");
+    signOut(auth).then(() => {
+      console.log('Usuario deslogueado');
+      navigate("/login");
+    }).catch((error) => {
+      console.log(error);
+    });
   };
 
   const home = {

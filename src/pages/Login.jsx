@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import styles from './login.styles.module.scss'
 import { useNavigate } from 'react-router-dom'
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../firebase/firebase-config';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -10,7 +11,6 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const handleSubmit = async (event) => {
     event.preventDefault()
-    const auth = getAuth();
 
     try {
       if (!email || !password || email === '' || password === '') {
@@ -18,9 +18,12 @@ const Login = () => {
         return
       }
       signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
-        console.log(userCredential)
+        const user = userCredential.user;
+        localStorage.setItem('token', user.accessToken)
+
+        console.log("User credentials: ", userCredential)
       })
-      navigate('/personajes');
+      navigate('/');
     } catch (error) {
       console.error(error)
     }
